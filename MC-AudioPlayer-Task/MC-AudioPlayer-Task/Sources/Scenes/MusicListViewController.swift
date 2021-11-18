@@ -48,7 +48,16 @@ class MusicListViewController: UIViewController {
         view.addSubview(tableView)
 
         tableView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+
+        /// 임시 하단 재생바
+        let tempBar = BottomPlayBar.shared
+        view.addSubview(tempBar)
+        tempBar.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
 }
