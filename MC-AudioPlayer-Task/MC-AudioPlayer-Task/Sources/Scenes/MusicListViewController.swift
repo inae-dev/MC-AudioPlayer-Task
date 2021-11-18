@@ -5,10 +5,20 @@
 //  Created by inae Lee on 2021/11/17.
 //
 
+import SnapKit
+import Then
 import UIKit
 
 class MusicListViewController: UIViewController {
     // MARK: - UIComponenets
+
+    lazy var tableView = UITableView().then {
+        $0.separatorStyle = .none
+        $0.rowHeight = UITableView.automaticDimension
+        $0.estimatedRowHeight = 140.0
+        $0.register(MusicTableViewCell.self, forCellReuseIdentifier: String(describing: MusicTableViewCell.self))
+        $0.dataSource = self
+    }
 
     // MARK: - Properties
 
@@ -20,6 +30,7 @@ class MusicListViewController: UIViewController {
         super.viewDidLoad()
 
         setView()
+        setConstraints()
     }
 
     // MARK: - Actions
@@ -31,5 +42,27 @@ class MusicListViewController: UIViewController {
         navigationController?.navigationBar.topItem?.title = "재생목록"
 
         view.backgroundColor = .white
+    }
+
+    func setConstraints() {
+        view.addSubview(tableView)
+
+        tableView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+    }
+}
+
+// MARK: - UITableViewDataSource
+
+extension MusicListViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        10
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MusicTableViewCell.self)) as? MusicTableViewCell else { return UITableViewCell() }
+
+        return cell
     }
 }
