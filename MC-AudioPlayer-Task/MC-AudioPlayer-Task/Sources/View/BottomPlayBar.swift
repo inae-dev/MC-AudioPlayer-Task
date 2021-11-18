@@ -37,11 +37,14 @@ class BottomPlayBar: UIView {
     }
     
     lazy var pauseButton = UIButton().then {
-        $0.backgroundColor = .systemGray
+        $0.setImage(UIImage(named: "ico_playAudio_small"), for: .normal)
+        $0.setImage(UIImage(named: "ico_pauseAudio_small"), for: .selected)
+        $0.addTarget(self, action: #selector(didTapPauseButton(_:)), for: .touchUpInside)
     }
     
     lazy var nextButton = UIButton().then {
-        $0.backgroundColor = .systemGray
+        $0.setImage(UIImage(named: "ico_nextAudio_small"), for: .normal)
+        $0.addTarget(self, action: #selector(didTapNextButton(_:)), for: .touchUpInside)
     }
     
     // MARK: - Properties
@@ -64,6 +67,16 @@ class BottomPlayBar: UIView {
     
     // MARK: - Actions
     
+    @objc
+    func didTapPauseButton(_ sender: UIButton) {
+        sender.isSelected.toggle()
+    }
+    
+    @objc
+    func didTapNextButton(_ sender: UIButton) {
+        /// 다음 음악 재생
+    }
+
     // MARK: - Methods
     
     func setView() {
@@ -99,15 +112,15 @@ class BottomPlayBar: UIView {
         }
         
         pauseButton.snp.makeConstraints {
-            $0.top.bottom.equalTo(nextButton)
             $0.trailing.equalTo(nextButton.snp.leading).offset(-10)
-            $0.width.height.equalTo(thumbnail)
+            $0.centerY.equalToSuperview()
+            $0.width.height.equalTo(48)
         }
         
         nextButton.snp.makeConstraints {
-            $0.top.bottom.equalTo(thumbnail)
             $0.trailing.equalToSuperview().offset(-10)
-            $0.width.height.equalTo(thumbnail)
+            $0.centerY.equalToSuperview()
+            $0.width.height.equalTo(48)
         }
     }
 }
