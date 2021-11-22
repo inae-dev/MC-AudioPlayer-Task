@@ -23,6 +23,7 @@
 		ABD75CB2274799A800F5F4DD /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD75CB1274799A800F5F4DD /* BaseAPI.swift */; };
 		ABD75CB627479ADA00F5F4DD /* ConfigAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD75CB527479ADA00F5F4DD /* ConfigAPI.swift */; };
 		ABD75CB827479CD600F5F4DD /* ConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD75CB727479CD600F5F4DD /* ConfigService.swift */; };
+		CDC061B7274BA036006018E2 /* UserDefaults.key+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC061B6274BA036006018E2 /* UserDefaults.key+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		ABD75CB1274799A800F5F4DD /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
 		ABD75CB527479ADA00F5F4DD /* ConfigAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigAPI.swift; sourceTree = "<group>"; };
 		ABD75CB727479CD600F5F4DD /* ConfigService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigService.swift; sourceTree = "<group>"; };
+		CDC061B6274BA036006018E2 /* UserDefaults.key+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults.key+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 		AB9F72F22744DA9F00F48D88 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				CDC061B5274BA020006018E2 /* Common */,
 				ABD75CAD2747991100F5F4DD /* Network */,
 				ABD75CAA2746221A00F5F4DD /* View */,
 				AB9F72FD2745012900F48D88 /* Cells */,
@@ -207,6 +210,14 @@
 				ABD75CB727479CD600F5F4DD /* ConfigService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		CDC061B5274BA020006018E2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CDC061B6274BA036006018E2 /* UserDefaults.key+.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,6 +365,7 @@
 				ABD75CB627479ADA00F5F4DD /* ConfigAPI.swift in Sources */,
 				AB9F72F62744F9A300F48D88 /* MusicListViewController.swift in Sources */,
 				ABD75CB2274799A800F5F4DD /* BaseAPI.swift in Sources */,
+				CDC061B7274BA036006018E2 /* UserDefaults.key+.swift in Sources */,
 				ABD75CB827479CD600F5F4DD /* ConfigService.swift in Sources */,
 				ABD75CAC2746237800F5F4DD /* BottomPlayBar.swift in Sources */,
 				AB9F72FF274501F200F48D88 /* MusicTableViewCell.swift in Sources */,

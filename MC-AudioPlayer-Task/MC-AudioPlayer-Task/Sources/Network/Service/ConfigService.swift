@@ -14,17 +14,18 @@ final class ConfigService {
 
     private init() {}
 
-    func fetchConfigURL(completion: @escaping (() -> Void)) {
+    func fetchConfigURL(completion: (() -> Void)? = nil) {
         ConfigService.provider.request(.getConfigURL) { result in
             switch result {
             case .success(let response):
                 do {
-//                    let json = try JSONSerialization.jsonObject(with: response, options: []) as? [String: Any]
-//
-//                    if let url = json["static_url_prefix"] as? String {
-//                        print(url)
-//                    }
+                    let data = response.data
+                    let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
 
+                    if let url = json?["static_url_prefix"] as? String {
+                        UserDefaults.staticURL = url
+                        completion?()
+                    }
                 } catch {
                     print("Decode Erorr", error)
                 }
