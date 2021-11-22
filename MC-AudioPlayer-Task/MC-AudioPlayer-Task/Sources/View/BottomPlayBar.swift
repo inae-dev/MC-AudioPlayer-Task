@@ -8,7 +8,12 @@
 import UIKit
 
 class BottomPlayBar: UIView {
-    static let shared = BottomPlayBar()
+    static let tag: Int = 5555
+    static var shared: Self? {
+        let keyWindow = UIApplication.shared.windows.first(where:  { $0.isKeyWindow })
+        
+        return keyWindow?.viewWithTag(Self.tag) as? Self
+    }
     
     // MARK: - UIComponenets
     
@@ -121,6 +126,23 @@ class BottomPlayBar: UIView {
             $0.trailing.equalToSuperview().offset(-10)
             $0.centerY.equalToSuperview()
             $0.width.height.equalTo(48)
+        }
+    }
+    
+    // MARK: - Static Method
+    
+    static func showInKeyWindow() {
+        guard let bottomView: BottomPlayBar = BottomPlayBar.shared else { return }
+        guard let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else { return }
+        
+        bottomView.show(in: keyWindow)
+    }
+    
+    func show(in view: UIView) {
+        view.addSubview(self)
+        
+        view.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview()
         }
     }
 }
