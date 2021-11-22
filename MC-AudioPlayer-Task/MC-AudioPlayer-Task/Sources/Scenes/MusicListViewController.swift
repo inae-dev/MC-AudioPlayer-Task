@@ -54,11 +54,11 @@ class MusicListViewController: UIViewController {
 
         /// 임시 하단 재생바
         let tempBar = BottomPlayBar.shared
-        view.addSubview(tempBar)
-        tempBar.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(view.safeAreaLayoutGuide)
-        }
+//        view.addSubview(tempBar)
+//        tempBar.snp.makeConstraints {
+//            $0.leading.trailing.equalToSuperview()
+//            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+//        }
     }
 }
 
@@ -73,5 +73,13 @@ extension MusicListViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MusicTableViewCell.self)) as? MusicTableViewCell else { return UITableViewCell() }
 
         return cell
+    }
+}
+
+// MARK: - UITableViewDataSource
+
+extension MusicListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        <#code#>
     }
 }
