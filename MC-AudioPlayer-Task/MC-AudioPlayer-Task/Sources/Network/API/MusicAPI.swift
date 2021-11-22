@@ -8,39 +8,47 @@
 import Foundation
 import Moya
 
-enum ConfigAPI {
+enum MusicAPI {
     case getConfigURL
+    case getPlayList
 }
 
-extension ConfigAPI: TargetType {
+extension MusicAPI: TargetType {
     var baseURL: URL {
-        URL(string: BaseAPI.baseURL)!
+        switch self {
+        case .getConfigURL:
+            return URL(string: BaseAPI.baseURL)!
+        case .getPlayList:
+            return URL(string: UserDefaults.staticURL)!
+        }
     }
 
     var path: String {
         switch self {
         case .getConfigURL:
             return "/config.json"
+        case .getPlayList:
+            return "/list.json"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .getConfigURL:
+        case .getConfigURL, .getPlayList:
             return .get
         }
     }
 
     var task: Task {
         switch self {
-        case .getConfigURL:
+        case .getConfigURL, .getPlayList:
             return .requestPlain
         }
     }
 
     var headers: [String: String]? {
         switch self {
-        case .getConfigURL:
+        case .getConfigURL, .getPlayList:
             return ["Content-Type": "application/json"]
         }
     }

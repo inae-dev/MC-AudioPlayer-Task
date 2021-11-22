@@ -31,6 +31,7 @@ class MusicListViewController: UIViewController {
 
         setView()
         setConstraints()
+        fetchData()
     }
 
     // MARK: - Actions
@@ -58,6 +59,12 @@ class MusicListViewController: UIViewController {
         tempBar.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
+    
+    func fetchData() {
+        MusicService.shared.fetchPlayList { response in
+            print(response)
         }
     }
 }

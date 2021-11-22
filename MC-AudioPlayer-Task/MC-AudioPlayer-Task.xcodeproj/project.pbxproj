@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB887C86274C1177000D3800 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB887C85274C1177000D3800 /* Music.swift */; };
 		AB9F72C32744D55F00F48D88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F72C22744D55F00F48D88 /* AppDelegate.swift */; };
 		AB9F72C52744D55F00F48D88 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F72C42744D55F00F48D88 /* SceneDelegate.swift */; };
 		AB9F72CC2744D56200F48D88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB9F72CB2744D56200F48D88 /* Assets.xcassets */; };
@@ -21,8 +22,8 @@
 		ABD75CAC2746237800F5F4DD /* BottomPlayBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD75CAB2746237800F5F4DD /* BottomPlayBar.swift */; };
 		ABD75CB02747997400F5F4DD /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = ABD75CAF2747997400F5F4DD /* Moya */; };
 		ABD75CB2274799A800F5F4DD /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD75CB1274799A800F5F4DD /* BaseAPI.swift */; };
-		ABD75CB627479ADA00F5F4DD /* ConfigAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD75CB527479ADA00F5F4DD /* ConfigAPI.swift */; };
-		ABD75CB827479CD600F5F4DD /* ConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD75CB727479CD600F5F4DD /* ConfigService.swift */; };
+		ABD75CB627479ADA00F5F4DD /* MusicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD75CB527479ADA00F5F4DD /* MusicAPI.swift */; };
+		ABD75CB827479CD600F5F4DD /* MusicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD75CB727479CD600F5F4DD /* MusicService.swift */; };
 		CDC061B7274BA036006018E2 /* UserDefaults.key+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC061B6274BA036006018E2 /* UserDefaults.key+.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB887C85274C1177000D3800 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		AB9F72BF2744D55F00F48D88 /* MC-AudioPlayer-Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MC-AudioPlayer-Task.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB9F72C22744D55F00F48D88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB9F72C42744D55F00F48D88 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,8 +61,8 @@
 		AB9F72FE274501F200F48D88 /* MusicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTableViewCell.swift; sourceTree = "<group>"; };
 		ABD75CAB2746237800F5F4DD /* BottomPlayBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomPlayBar.swift; sourceTree = "<group>"; };
 		ABD75CB1274799A800F5F4DD /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
-		ABD75CB527479ADA00F5F4DD /* ConfigAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigAPI.swift; sourceTree = "<group>"; };
-		ABD75CB727479CD600F5F4DD /* ConfigService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigService.swift; sourceTree = "<group>"; };
+		ABD75CB527479ADA00F5F4DD /* MusicAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicAPI.swift; sourceTree = "<group>"; };
+		ABD75CB727479CD600F5F4DD /* MusicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicService.swift; sourceTree = "<group>"; };
 		CDC061B6274BA036006018E2 /* UserDefaults.key+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults.key+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,6 +94,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB887C80274C0B1F000D3800 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AB887C85274C1177000D3800 /* Music.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		AB9F72B62744D55F00F48D88 = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +151,7 @@
 		AB9F72F22744DA9F00F48D88 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				AB887C80274C0B1F000D3800 /* Model */,
 				CDC061B5274BA020006018E2 /* Common */,
 				ABD75CAD2747991100F5F4DD /* Network */,
 				ABD75CAA2746221A00F5F4DD /* View */,
@@ -199,7 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				ABD75CB1274799A800F5F4DD /* BaseAPI.swift */,
-				ABD75CB527479ADA00F5F4DD /* ConfigAPI.swift */,
+				ABD75CB527479ADA00F5F4DD /* MusicAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -207,7 +218,7 @@
 		ABD75CB427479A1900F5F4DD /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				ABD75CB727479CD600F5F4DD /* ConfigService.swift */,
+				ABD75CB727479CD600F5F4DD /* MusicService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -362,11 +373,12 @@
 			files = (
 				AB9F72C32744D55F00F48D88 /* AppDelegate.swift in Sources */,
 				AB9F72C52744D55F00F48D88 /* SceneDelegate.swift in Sources */,
-				ABD75CB627479ADA00F5F4DD /* ConfigAPI.swift in Sources */,
+				ABD75CB627479ADA00F5F4DD /* MusicAPI.swift in Sources */,
 				AB9F72F62744F9A300F48D88 /* MusicListViewController.swift in Sources */,
 				ABD75CB2274799A800F5F4DD /* BaseAPI.swift in Sources */,
 				CDC061B7274BA036006018E2 /* UserDefaults.key+.swift in Sources */,
-				ABD75CB827479CD600F5F4DD /* ConfigService.swift in Sources */,
+				ABD75CB827479CD600F5F4DD /* MusicService.swift in Sources */,
+				AB887C86274C1177000D3800 /* Music.swift in Sources */,
 				ABD75CAC2746237800F5F4DD /* BottomPlayBar.swift in Sources */,
 				AB9F72FF274501F200F48D88 /* MusicTableViewCell.swift in Sources */,
 			);
