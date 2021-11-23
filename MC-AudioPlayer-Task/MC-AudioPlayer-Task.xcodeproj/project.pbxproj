@@ -24,6 +24,7 @@
 		ABD75CB2274799A800F5F4DD /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD75CB1274799A800F5F4DD /* BaseAPI.swift */; };
 		ABD75CB627479ADA00F5F4DD /* MusicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD75CB527479ADA00F5F4DD /* MusicAPI.swift */; };
 		ABD75CB827479CD600F5F4DD /* MusicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD75CB727479CD600F5F4DD /* MusicService.swift */; };
+		CD6C96E1274C8428003ACB3C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CD6C96E0274C8428003ACB3C /* Kingfisher */; };
 		CDC061B7274BA036006018E2 /* UserDefaults.key+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC061B6274BA036006018E2 /* UserDefaults.key+.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD6C96E1274C8428003ACB3C /* Kingfisher in Frameworks */,
 				AB9F72F92744FDE700F48D88 /* SnapKit in Frameworks */,
 				AB9F72FC2744FE3600F48D88 /* Then in Frameworks */,
 				ABD75CB02747997400F5F4DD /* Moya in Frameworks */,
@@ -259,6 +261,7 @@
 				AB9F72F82744FDE700F48D88 /* SnapKit */,
 				AB9F72FB2744FE3600F48D88 /* Then */,
 				ABD75CAF2747997400F5F4DD /* Moya */,
+				CD6C96E0274C8428003ACB3C /* Kingfisher */,
 			);
 			productName = "MC-AudioPlayer-Task";
 			productReference = AB9F72BF2744D55F00F48D88 /* MC-AudioPlayer-Task.app */;
@@ -336,6 +339,7 @@
 				AB9F72F72744FDE700F48D88 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				AB9F72FA2744FE3600F48D88 /* XCRemoteSwiftPackageReference "Then" */,
 				ABD75CAE2747997400F5F4DD /* XCRemoteSwiftPackageReference "Moya" */,
+				CD6C96DF274C8428003ACB3C /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = AB9F72C02744D55F00F48D88 /* Products */;
 			projectDirPath = "";
@@ -768,6 +772,14 @@
 				kind = branch;
 			};
 		};
+		CD6C96DF274C8428003ACB3C /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -785,6 +797,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = ABD75CAE2747997400F5F4DD /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
+		};
+		CD6C96E0274C8428003ACB3C /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD6C96DF274C8428003ACB3C /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
