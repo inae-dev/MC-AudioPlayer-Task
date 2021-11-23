@@ -6,13 +6,13 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MusicTableViewCell: UITableViewCell {
     // MARK: - UIComponents
 
     let thumbnail = UIImageView().then {
         $0.backgroundColor = .systemGray
-        $0.image = UIImage(systemName: "music.note")
     }
 
     let musicTitleLabel = UILabel().then {
@@ -44,7 +44,14 @@ class MusicTableViewCell: UITableViewCell {
     override func updateConstraints() {
         super.updateConstraints()
     }
-
+    
+    override func prepareForReuse() {
+        musicTitleLabel.text = ""
+        musicDescLabel.text = ""
+        
+        thumbnail.image = UIImage()
+    }
+    
     // MARK: - Method
 
     func setConstraints() {
@@ -70,5 +77,11 @@ class MusicTableViewCell: UITableViewCell {
     func setCell(music: Music) {
         musicTitleLabel.text = music.title
         musicDescLabel.text = music.musicDescription
+        
+        if let url = music.imageURL {
+            thumbnail.kf.setImage(with: URL(string: UserDefaults.staticURL + url)!,
+                                  placeholder: UIImage(systemName: "music.note"),
+                                  options: [.transition(.fade(1)), .cacheOriginalImage])
+        }
     }
 }
