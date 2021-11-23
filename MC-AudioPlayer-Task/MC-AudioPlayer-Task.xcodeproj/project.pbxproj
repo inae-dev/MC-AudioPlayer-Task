@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB887C86274C1177000D3800 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB887C85274C1177000D3800 /* Music.swift */; };
 		AB9F72C32744D55F00F48D88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F72C22744D55F00F48D88 /* AppDelegate.swift */; };
 		AB9F72C52744D55F00F48D88 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F72C42744D55F00F48D88 /* SceneDelegate.swift */; };
 		AB9F72CC2744D56200F48D88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB9F72CB2744D56200F48D88 /* Assets.xcassets */; };
@@ -20,6 +21,11 @@
 		AB9F72FF274501F200F48D88 /* MusicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F72FE274501F200F48D88 /* MusicTableViewCell.swift */; };
 		ABD75CAC2746237800F5F4DD /* BottomPlayBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD75CAB2746237800F5F4DD /* BottomPlayBar.swift */; };
 		ABD75CB02747997400F5F4DD /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = ABD75CAF2747997400F5F4DD /* Moya */; };
+		ABD75CB2274799A800F5F4DD /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD75CB1274799A800F5F4DD /* BaseAPI.swift */; };
+		ABD75CB627479ADA00F5F4DD /* MusicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD75CB527479ADA00F5F4DD /* MusicAPI.swift */; };
+		ABD75CB827479CD600F5F4DD /* MusicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD75CB727479CD600F5F4DD /* MusicService.swift */; };
+		CD6C96E1274C8428003ACB3C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CD6C96E0274C8428003ACB3C /* Kingfisher */; };
+		CDC061B7274BA036006018E2 /* UserDefaults.key+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC061B6274BA036006018E2 /* UserDefaults.key+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB887C85274C1177000D3800 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		AB9F72BF2744D55F00F48D88 /* MC-AudioPlayer-Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MC-AudioPlayer-Task.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB9F72C22744D55F00F48D88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB9F72C42744D55F00F48D88 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +61,10 @@
 		AB9F72F52744F9A300F48D88 /* MusicListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListViewController.swift; sourceTree = "<group>"; };
 		AB9F72FE274501F200F48D88 /* MusicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTableViewCell.swift; sourceTree = "<group>"; };
 		ABD75CAB2746237800F5F4DD /* BottomPlayBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomPlayBar.swift; sourceTree = "<group>"; };
+		ABD75CB1274799A800F5F4DD /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
+		ABD75CB527479ADA00F5F4DD /* MusicAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicAPI.swift; sourceTree = "<group>"; };
+		ABD75CB727479CD600F5F4DD /* MusicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicService.swift; sourceTree = "<group>"; };
+		CDC061B6274BA036006018E2 /* UserDefaults.key+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults.key+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD6C96E1274C8428003ACB3C /* Kingfisher in Frameworks */,
 				AB9F72F92744FDE700F48D88 /* SnapKit in Frameworks */,
 				AB9F72FC2744FE3600F48D88 /* Then in Frameworks */,
 				ABD75CB02747997400F5F4DD /* Moya in Frameworks */,
@@ -84,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB887C80274C0B1F000D3800 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AB887C85274C1177000D3800 /* Music.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		AB9F72B62744D55F00F48D88 = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +153,9 @@
 		AB9F72F22744DA9F00F48D88 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				AB887C80274C0B1F000D3800 /* Model */,
+				CDC061B5274BA020006018E2 /* Common */,
+				ABD75CAD2747991100F5F4DD /* Network */,
 				ABD75CAA2746221A00F5F4DD /* View */,
 				AB9F72FD2745012900F48D88 /* Cells */,
 				AB9F72F42744DF7500F48D88 /* Scenes */,
@@ -176,6 +199,48 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		ABD75CAD2747991100F5F4DD /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				ABD75CB427479A1900F5F4DD /* Service */,
+				ABD75CB327479A0C00F5F4DD /* API */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		ABD75CB327479A0C00F5F4DD /* API */ = {
+			isa = PBXGroup;
+			children = (
+				ABD75CB1274799A800F5F4DD /* BaseAPI.swift */,
+				ABD75CB527479ADA00F5F4DD /* MusicAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		ABD75CB427479A1900F5F4DD /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				ABD75CB727479CD600F5F4DD /* MusicService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		CD6C96DA274C7EEE003ACB3C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CDC061B6274BA036006018E2 /* UserDefaults.key+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CDC061B5274BA020006018E2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CD6C96DA274C7EEE003ACB3C /* Extensions */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -196,6 +261,7 @@
 				AB9F72F82744FDE700F48D88 /* SnapKit */,
 				AB9F72FB2744FE3600F48D88 /* Then */,
 				ABD75CAF2747997400F5F4DD /* Moya */,
+				CD6C96E0274C8428003ACB3C /* Kingfisher */,
 			);
 			productName = "MC-AudioPlayer-Task";
 			productReference = AB9F72BF2744D55F00F48D88 /* MC-AudioPlayer-Task.app */;
@@ -273,6 +339,7 @@
 				AB9F72F72744FDE700F48D88 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				AB9F72FA2744FE3600F48D88 /* XCRemoteSwiftPackageReference "Then" */,
 				ABD75CAE2747997400F5F4DD /* XCRemoteSwiftPackageReference "Moya" */,
+				CD6C96DF274C8428003ACB3C /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = AB9F72C02744D55F00F48D88 /* Products */;
 			projectDirPath = "";
@@ -318,7 +385,12 @@
 			files = (
 				AB9F72C32744D55F00F48D88 /* AppDelegate.swift in Sources */,
 				AB9F72C52744D55F00F48D88 /* SceneDelegate.swift in Sources */,
+				ABD75CB627479ADA00F5F4DD /* MusicAPI.swift in Sources */,
 				AB9F72F62744F9A300F48D88 /* MusicListViewController.swift in Sources */,
+				ABD75CB2274799A800F5F4DD /* BaseAPI.swift in Sources */,
+				CDC061B7274BA036006018E2 /* UserDefaults.key+.swift in Sources */,
+				ABD75CB827479CD600F5F4DD /* MusicService.swift in Sources */,
+				AB887C86274C1177000D3800 /* Music.swift in Sources */,
 				ABD75CAC2746237800F5F4DD /* BottomPlayBar.swift in Sources */,
 				AB9F72FF274501F200F48D88 /* MusicTableViewCell.swift in Sources */,
 			);
@@ -700,6 +772,14 @@
 				kind = branch;
 			};
 		};
+		CD6C96DF274C8428003ACB3C /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -717,6 +797,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = ABD75CAE2747997400F5F4DD /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
+		};
+		CD6C96E0274C8428003ACB3C /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD6C96DF274C8428003ACB3C /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

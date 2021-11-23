@@ -6,24 +6,22 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MusicTableViewCell: UITableViewCell {
     // MARK: - UIComponents
 
     let thumbnail = UIImageView().then {
         $0.backgroundColor = .systemGray
-        $0.image = UIImage(systemName: "music.note")
     }
 
     let musicTitleLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 20, weight: .bold)
-        $0.text = "제목이 여기에 들어갑니다. 길어지면 이렇게~~~~~~"
         $0.lineBreakMode = .byTruncatingTail
     }
 
     let musicDescLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 18, weight: .thin)
-        $0.text = "작성자 이름은.."
         $0.textColor = .lightGray
     }
 
@@ -46,7 +44,14 @@ class MusicTableViewCell: UITableViewCell {
     override func updateConstraints() {
         super.updateConstraints()
     }
-
+    
+    override func prepareForReuse() {
+        musicTitleLabel.text = ""
+        musicDescLabel.text = ""
+        
+        thumbnail.image = UIImage()
+    }
+    
     // MARK: - Method
 
     func setConstraints() {
@@ -66,6 +71,17 @@ class MusicTableViewCell: UITableViewCell {
         musicDescLabel.snp.makeConstraints {
             $0.top.equalTo(musicTitleLabel.snp.bottom).offset(5)
             $0.leading.trailing.equalTo(musicTitleLabel)
+        }
+    }
+    
+    func setCell(music: Music) {
+        musicTitleLabel.text = music.title
+        musicDescLabel.text = music.musicDescription
+        
+        if let url = music.imageURL {
+            thumbnail.kf.setImage(with: URL(string: UserDefaults.staticURL + url)!,
+                                  placeholder: UIImage(systemName: "music.note"),
+                                  options: [.transition(.fade(1)), .cacheOriginalImage])
         }
     }
 }

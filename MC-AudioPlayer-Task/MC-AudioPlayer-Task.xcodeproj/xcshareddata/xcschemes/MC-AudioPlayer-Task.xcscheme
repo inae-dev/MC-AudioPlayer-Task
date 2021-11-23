@@ -28,6 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AB9F72D42744D56200F48D88"
+               BuildableName = "MC-AudioPlayer-TaskTests.xctest"
+               BlueprintName = "MC-AudioPlayer-TaskTests"
+               ReferencedContainer = "container:MC-AudioPlayer-Task.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AB9F72DE2744D56200F48D88"
+               BuildableName = "MC-AudioPlayer-TaskUITests.xctest"
+               BlueprintName = "MC-AudioPlayer-TaskUITests"
+               ReferencedContainer = "container:MC-AudioPlayer-Task.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -50,6 +70,13 @@
             ReferencedContainer = "container:MC-AudioPlayer-Task.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "OS _ACTIVITY_MODE"
+            value = "disable"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
