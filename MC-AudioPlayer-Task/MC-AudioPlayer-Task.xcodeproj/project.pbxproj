@@ -223,10 +223,18 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		CDC061B5274BA020006018E2 /* Common */ = {
+		CD6C96DA274C7EEE003ACB3C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				CDC061B6274BA036006018E2 /* UserDefaults.key+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CDC061B5274BA020006018E2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CD6C96DA274C7EEE003ACB3C /* Extensions */,
 			);
 			path = Common;
 			sourceTree = "<group>";

@@ -21,6 +21,8 @@ class MusicListViewController: UIViewController {
     }
 
     // MARK: - Properties
+    
+    var playList: [Music] = []
 
     // MARK: - Initializer
 
@@ -63,8 +65,10 @@ class MusicListViewController: UIViewController {
     }
     
     func fetchData() {
-        MusicService.shared.fetchPlayList { response in
-            print(response)
+        MusicService.shared.fetchPlayList { [weak self] response in
+            self?.playList = response
+            
+            self?.tableView.reloadData()
         }
     }
 }
@@ -73,11 +77,12 @@ class MusicListViewController: UIViewController {
 
 extension MusicListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        playList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MusicTableViewCell.self)) as? MusicTableViewCell else { return UITableViewCell() }
+        cell.setCell(music: playList[indexPath.row])
 
         return cell
     }
