@@ -13,7 +13,6 @@ class MusicListViewController: UIViewController {
     // MARK: - UIComponenets
 
     lazy var tableView = UITableView().then {
-        $0.separatorStyle = .none
         $0.rowHeight = UITableView.automaticDimension
         $0.estimatedRowHeight = 140.0
         $0.register(MusicTableViewCell.self, forCellReuseIdentifier: String(describing: MusicTableViewCell.self))

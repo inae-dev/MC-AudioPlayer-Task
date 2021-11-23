@@ -53,7 +53,7 @@ class MusicTableViewCell: UITableViewCell {
         [thumbnail, musicTitleLabel, musicDescLabel].forEach { contentView.addSubview($0) }
         
         thumbnail.snp.makeConstraints {
-            $0.top.leading.bottom.equalToSuperview().inset(20)
+            $0.top.leading.bottom.equalToSuperview().inset(20).priority(999)
             $0.width.height.equalTo(100)
         }
 
