@@ -8,11 +8,11 @@
 import UIKit
 
 class BottomPlayBar: UIView {
-    static let tag: Int = 5555
-    static var shared: Self? {
+    static let tagIdx: Int = 5555
+    static var presentedView: Self? {
         let keyWindow = UIApplication.shared.windows.first(where:  { $0.isKeyWindow })
         
-        return keyWindow?.viewWithTag(Self.tag) as? Self
+        return keyWindow?.viewWithTag(Self.tagIdx) as? Self
     }
     
     // MARK: - UIComponenets
@@ -85,6 +85,7 @@ class BottomPlayBar: UIView {
     // MARK: - Methods
     
     func setView() {
+        tag = Self.tagIdx
         backgroundColor = .systemGray6
     }
     
@@ -127,22 +128,42 @@ class BottomPlayBar: UIView {
             $0.centerY.equalToSuperview()
             $0.width.height.equalTo(48)
         }
+        
+        layoutIfNeeded()
     }
     
     // MARK: - Static Method
     
     static func showInKeyWindow() {
-        guard let bottomView: BottomPlayBar = BottomPlayBar.shared else { return }
+        let bottomBar = BottomPlayBar()
         guard let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else { return }
         
-        bottomView.show(in: keyWindow)
+        bottomBar.show(in: keyWindow)
     }
     
-    func show(in view: UIView) {
+    static func didChangeMusic() {
+        /// 현재 재생 음악 데이터 변경
+        print("change data")
+    }
+    
+    
+    // MARK: - Method
+    
+    private func show(in view: UIView) {
         view.addSubview(self)
-        
-        view.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
+                
+        snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+        
+        alpha = 0
+        UIView.animate(withDuration: 0.2) {
+            self.alpha = 1
+        }
+    }
+    
+    private func hide() {
+        self.removeFromSuperview()
     }
 }

@@ -20,9 +20,6 @@
 		AB9F72FF274501F200F48D88 /* MusicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F72FE274501F200F48D88 /* MusicTableViewCell.swift */; };
 		ABD75CAC2746237800F5F4DD /* BottomPlayBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD75CAB2746237800F5F4DD /* BottomPlayBar.swift */; };
 		ABD75CB02747997400F5F4DD /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = ABD75CAF2747997400F5F4DD /* Moya */; };
-		ABD75CB2274799A800F5F4DD /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD75CB1274799A800F5F4DD /* BaseAPI.swift */; };
-		ABD75CB627479ADA00F5F4DD /* ConfigAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD75CB527479ADA00F5F4DD /* ConfigAPI.swift */; };
-		ABD75CB827479CD600F5F4DD /* ConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD75CB727479CD600F5F4DD /* ConfigService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,9 +54,6 @@
 		AB9F72F52744F9A300F48D88 /* MusicListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListViewController.swift; sourceTree = "<group>"; };
 		AB9F72FE274501F200F48D88 /* MusicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTableViewCell.swift; sourceTree = "<group>"; };
 		ABD75CAB2746237800F5F4DD /* BottomPlayBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomPlayBar.swift; sourceTree = "<group>"; };
-		ABD75CB1274799A800F5F4DD /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
-		ABD75CB527479ADA00F5F4DD /* ConfigAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigAPI.swift; sourceTree = "<group>"; };
-		ABD75CB727479CD600F5F4DD /* ConfigService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +133,6 @@
 		AB9F72F22744DA9F00F48D88 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				ABD75CAD2747991100F5F4DD /* Network */,
 				ABD75CAA2746221A00F5F4DD /* View */,
 				AB9F72FD2745012900F48D88 /* Cells */,
 				AB9F72F42744DF7500F48D88 /* Scenes */,
@@ -181,32 +174,6 @@
 				ABD75CAB2746237800F5F4DD /* BottomPlayBar.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		ABD75CAD2747991100F5F4DD /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				ABD75CB427479A1900F5F4DD /* Service */,
-				ABD75CB327479A0C00F5F4DD /* API */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		ABD75CB327479A0C00F5F4DD /* API */ = {
-			isa = PBXGroup;
-			children = (
-				ABD75CB1274799A800F5F4DD /* BaseAPI.swift */,
-				ABD75CB527479ADA00F5F4DD /* ConfigAPI.swift */,
-			);
-			path = API;
-			sourceTree = "<group>";
-		};
-		ABD75CB427479A1900F5F4DD /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				ABD75CB727479CD600F5F4DD /* ConfigService.swift */,
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -351,10 +318,7 @@
 			files = (
 				AB9F72C32744D55F00F48D88 /* AppDelegate.swift in Sources */,
 				AB9F72C52744D55F00F48D88 /* SceneDelegate.swift in Sources */,
-				ABD75CB627479ADA00F5F4DD /* ConfigAPI.swift in Sources */,
 				AB9F72F62744F9A300F48D88 /* MusicListViewController.swift in Sources */,
-				ABD75CB2274799A800F5F4DD /* BaseAPI.swift in Sources */,
-				ABD75CB827479CD600F5F4DD /* ConfigService.swift in Sources */,
 				ABD75CAC2746237800F5F4DD /* BottomPlayBar.swift in Sources */,
 				AB9F72FF274501F200F48D88 /* MusicTableViewCell.swift in Sources */,
 			);
