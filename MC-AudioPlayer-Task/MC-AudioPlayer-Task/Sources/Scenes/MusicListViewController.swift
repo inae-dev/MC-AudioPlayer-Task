@@ -90,6 +90,6 @@ extension MusicListViewController: UITableViewDelegate {
             tableView.contentInset.bottom =  BottomPlayBar.presentedView?.bounds.height ?? 100
         }
         
-        BottomPlayBar.didChangeMusic()
+        BottomPlayBar.didChangeMusic(to: playList[indexPath.row])
     }
 }

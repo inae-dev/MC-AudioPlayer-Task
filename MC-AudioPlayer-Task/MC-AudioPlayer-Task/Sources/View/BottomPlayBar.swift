@@ -141,9 +141,16 @@ class BottomPlayBar: UIView {
         bottomBar.show(in: keyWindow)
     }
     
-    static func didChangeMusic() {
-        /// 현재 재생 음악 데이터 변경
-        print("change data")
+    static func didChangeMusic(to music: Music) {
+        guard let presentedView = presentedView else { return }
+        presentedView.musicTitleLabel.text = music.title
+        presentedView.musicDescLabel.text = music.musicDescription
+        
+        if let url = music.imageURL {
+            presentedView.thumbnail.kf.setImage(with: URL(string: UserDefaults.staticURL + url)!,
+                                  placeholder: UIImage(systemName: "music.note"),
+                                                options: [.transition(.fade(1)), .cacheOriginalImage])
+        }
     }
     
     
