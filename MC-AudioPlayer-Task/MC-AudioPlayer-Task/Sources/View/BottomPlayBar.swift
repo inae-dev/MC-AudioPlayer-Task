@@ -29,14 +29,12 @@ class BottomPlayBar: UIView {
     }
     
     let musicTitleLabel = UILabel().then {
-        $0.text = "현재 재생되는 곡은 여기에.. 띄워가지고 이렇게 .. 헿"
         $0.numberOfLines = 1
         $0.lineBreakMode = .byTruncatingTail
         $0.font = .systemFont(ofSize: 16)
     }
     
     let musicDescLabel = UILabel().then {
-        $0.text = "작성자의 이름은 이모씨.."
         $0.numberOfLines = 1
         $0.lineBreakMode = .byTruncatingTail
         $0.font = .systemFont(ofSize: 14)
@@ -52,24 +50,43 @@ class BottomPlayBar: UIView {
     lazy var nextButton = UIButton().then {
         $0.setImage(UIImage(named: "ico_nextAudio_small"), for: .normal)
         $0.addTarget(self, action: #selector(didTapNextButton(_:)), for: .touchUpInside)
+        $0.tag = 1
     }
     
     // MARK: - Detail Components
     
     let detailTitleLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 25, weight: .heavy)
-        $0.text = "재생 중인 오디오 제목 - 가운데 넘어가면 다음 줄로"
         $0.numberOfLines = 0
         $0.textAlignment = .center
         $0.alpha = 0
     }
     
     let detailAuthorLabel = UILabel().then {
-        $0.text = "작성자의 이름 어쩌구"
         $0.textAlignment = .center
         $0.textColor = .lightGray
         $0.alpha = 0
     }
+    
+    lazy var detailPauseButton = UIButton().then {
+        $0.setImage(UIImage(named: "ico_playAudio"), for: .normal)
+        $0.setImage(UIImage(named: "ico_pauseAudio"), for: .selected)
+        $0.addTarget(self, action: #selector(didTapPauseButton(_:)), for: .touchUpInside)
+    }
+    
+    lazy var detailNextButton = UIButton().then {
+        $0.setImage(UIImage(named: "ico_nextAudio"), for: .normal)
+        $0.addTarget(self, action: #selector(didTapNextButton(_:)), for: .touchUpInside)
+        $0.tag = 1
+    }
+
+    
+    lazy var detailPrevButton = UIButton().then {
+        $0.setImage(UIImage(named: "ico_prevAudio"), for: .normal)
+        $0.addTarget(self, action: #selector(didTapNextButton(_:)), for: .touchUpInside)
+        $0.tag = -1
+    }
+
     
     // MARK: - Properties
     
@@ -106,7 +123,7 @@ class BottomPlayBar: UIView {
     
     @objc
     func didTapNextButton(_ sender: UIButton) {
-        delegate?.nextMusic(dir: 1)
+        delegate?.nextMusic(dir: sender.tag)
     }
     
     @objc
@@ -158,7 +175,7 @@ class BottomPlayBar: UIView {
     }
     
     func setConstraints() {
-        [borderView, thumbnail, musicTitleLabel, musicDescLabel, pauseButton, nextButton, detailTitleLabel, detailAuthorLabel].forEach { addSubview($0) }
+        [borderView, thumbnail, musicTitleLabel, musicDescLabel, pauseButton, nextButton, detailTitleLabel, detailAuthorLabel, detailPauseButton, detailPrevButton, detailNextButton].forEach { addSubview($0) }
         
         snp.makeConstraints {
             $0.height.equalTo(minHeight)
@@ -206,6 +223,21 @@ class BottomPlayBar: UIView {
         detailAuthorLabel.snp.makeConstraints {
             $0.top.equalTo(detailTitleLabel.snp.bottom).offset(20)
             $0.centerX.equalTo(detailTitleLabel)
+        }
+        
+        detailPauseButton.snp.makeConstraints {
+            $0.top.equalTo(detailAuthorLabel.snp.bottom).offset(20)
+            $0.centerX.equalToSuperview()
+        }
+        
+        detailPrevButton.snp.makeConstraints {
+            $0.trailing.equalTo(detailPauseButton.snp.leading).offset(-30)
+            $0.centerY.equalTo(detailPauseButton)
+        }
+        
+        detailNextButton.snp.makeConstraints {
+            $0.leading.equalTo(detailPauseButton.snp.trailing).offset(30)
+            $0.centerY.equalTo(detailPauseButton)
         }
     }
     
@@ -262,6 +294,8 @@ class BottomPlayBar: UIView {
         guard let presentedView = presentedView else { return }
         presentedView.musicTitleLabel.text = music.title
         presentedView.musicDescLabel.text = music.musicDescription
+        presentedView.detailTitleLabel.text = music.title
+        presentedView.detailAuthorLabel.text = music.musicDescription
         
         if let url = music.imageURL {
             presentedView.thumbnail.kf.setImage(with: URL(string: UserDefaults.staticURL + url)!,
