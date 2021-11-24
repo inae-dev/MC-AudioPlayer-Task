@@ -14,7 +14,7 @@ final class MusicService {
 
     private init() {}
 
-    func fetchConfigURL(completion: (() -> Void)? = nil) {
+    func fetchConfigURL(completion: ((String) -> Void)? = nil) {
         MusicService.provider.request(.getConfigURL) { result in
             switch result {
             case .success(let response):
@@ -23,8 +23,7 @@ final class MusicService {
                     let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
 
                     if let url = json?["static_url_prefix"] as? String {
-                        UserDefaults.staticURL = url
-                        completion?()
+                        completion?(url)
                     }
                 } catch {
                     print("[Decode Erorr] | ", error)
