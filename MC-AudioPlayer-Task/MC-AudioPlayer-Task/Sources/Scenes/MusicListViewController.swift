@@ -23,6 +23,15 @@ class MusicListViewController: UIViewController {
     // MARK: - Properties
     
     var playList: [Music] = []
+    var delegate: MusicDelegate?
+    
+    var currIdx: Int? {
+        didSet {
+            if let currIdx = currIdx {
+                BottomPlayBar.didChangeMusic(to: playList[currIdx])
+            }
+        }
+    }
 
     // MARK: - Initializer
 
@@ -86,10 +95,25 @@ extension MusicListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if BottomPlayBar.presentedView == nil {
             BottomPlayBar.showInKeyWindow()
+            BottomPlayBar.presentedView?.delegate = self
             
             tableView.contentInset.bottom =  BottomPlayBar.presentedView?.bounds.height ?? 100
         }
         
-        BottomPlayBar.didChangeMusic()
+        currIdx = indexPath.row
     }
 }
+
+extension MusicListViewController: MusicDelegate {
+    func nextMusic(dir: Int) {
+        guard let idx = currIdx else { return }
+        
+        let next = idx + dir
+        if (0...playList.count - 1).contains(next) {
+            currIdx = next
+        } else {
+            currIdx = next < 0 ? playList.count - 1 : 0
+        }
+    }
+}
+ 

@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol MusicDelegate {
+    func nextMusic(dir: Int)
+}
+
 class BottomPlayBar: UIView {
     static let tagIdx: Int = 5555
     static var presentedView: Self? {
@@ -69,6 +73,8 @@ class BottomPlayBar: UIView {
     
     // MARK: - Properties
     
+    var delegate: MusicDelegate?
+    
     lazy var panGesture = UIPanGestureRecognizer(target: self, action: #selector(handleBottomPlayView(_:)))
     lazy var maxHeight = keyWindow.safeAreaLayoutGuide.layoutFrame.height
     lazy var minHeight = UIScreen.main.bounds.height / 10.0
@@ -100,7 +106,7 @@ class BottomPlayBar: UIView {
     
     @objc
     func didTapNextButton(_ sender: UIButton) {
-        /// 다음 음악 재생
+        delegate?.nextMusic(dir: 1)
     }
     
     @objc
@@ -252,9 +258,16 @@ class BottomPlayBar: UIView {
         bottomBar.show(in: keyWindow)
     }
     
-    static func didChangeMusic() {
-        /// 현재 재생 음악 데이터 변경
-        print("change data")
+    static func didChangeMusic(to music: Music) {
+        guard let presentedView = presentedView else { return }
+        presentedView.musicTitleLabel.text = music.title
+        presentedView.musicDescLabel.text = music.musicDescription
+        
+        if let url = music.imageURL {
+            presentedView.thumbnail.kf.setImage(with: URL(string: UserDefaults.staticURL + url)!,
+                                  placeholder: UIImage(systemName: "music.note"),
+                                                options: [.transition(.fade(1)), .cacheOriginalImage])
+        }
     }
     
     
