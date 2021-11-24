@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol MusicDelegate {
+    func nextMusic(dir: Int)
+}
+
 class BottomPlayBar: UIView {
     static let tagIdx: Int = 5555
     static var presentedView: Self? {
@@ -54,6 +58,8 @@ class BottomPlayBar: UIView {
     
     // MARK: - Properties
     
+    var delegate: MusicDelegate?
+    
     // MARK: - Initializer
     
     private init() {
@@ -79,7 +85,7 @@ class BottomPlayBar: UIView {
     
     @objc
     func didTapNextButton(_ sender: UIButton) {
-        /// 다음 음악 재생
+        delegate?.nextMusic(dir: 1)
     }
 
     // MARK: - Methods
