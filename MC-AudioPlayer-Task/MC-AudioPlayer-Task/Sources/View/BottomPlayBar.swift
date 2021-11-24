@@ -105,22 +105,21 @@ class BottomPlayBar: UIView {
     
     @objc
     func handleBottomPlayView(_ gesture: UIPanGestureRecognizer) {
-        let translationY = gesture.translation(in: self).y
-        let screenHeight = bounds.height
+        let point = bounds.height - gesture.translation(in: self).y
         let velocity = gesture.velocity(in: self)
         
         switch gesture.state {
         case .changed:
-            if screenHeight - translationY > minHeight, screenHeight - translationY <= maxHeight {
+            if  point > minHeight, point <= maxHeight {
+                let percent = point / maxHeight
+                let width = percent * maxHeight - 20 < maxWidth ? percent * maxHeight - 20 : maxWidth
+
                 snp.updateConstraints { make in
-                    make.height.equalTo(screenHeight - translationY)
+                    make.height.equalTo(point)
                 }
                 
-                let percent = (screenHeight - translationY) / maxHeight
-                print(Float(percent), maxWidth * percent)
-                
                 thumbnail.snp.updateConstraints { make in
-                    make.width.height.equalTo(maxWidth * percent)
+                    make.width.height.equalTo(width)
                 }
                 
                 borderView.alpha = 1.0 - CGFloat(percent)
@@ -170,7 +169,7 @@ class BottomPlayBar: UIView {
         }
         
         musicTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(thumbnail).offset(10)
+            $0.top.equalTo(thumbnail)
             $0.leading.equalTo(thumbnail.snp.trailing).offset(10)
             $0.width.equalTo(190)
         }
@@ -188,7 +187,7 @@ class BottomPlayBar: UIView {
         }
         
         nextButton.snp.makeConstraints {
-            $0.top.trailing.equalToSuperview().inset(20).priority(999)
+            $0.top.trailing.equalToSuperview().inset(10).priority(999)
             $0.width.height.equalTo(48)
         }
         
@@ -202,8 +201,6 @@ class BottomPlayBar: UIView {
             $0.top.equalTo(detailTitleLabel.snp.bottom).offset(20)
             $0.centerX.equalTo(detailTitleLabel)
         }
-        
-        layoutIfNeeded()
     }
     
     private func openView() {
@@ -214,7 +211,7 @@ class BottomPlayBar: UIView {
         thumbnail.snp.updateConstraints { make in
             make.width.height.equalTo(UIScreen.main.bounds.width - 20.0)
         }
-        
+
         borderView.alpha = 0
         musicTitleLabel.alpha = 0
         musicDescLabel.alpha = 0
@@ -240,6 +237,10 @@ class BottomPlayBar: UIView {
         pauseButton.alpha = 1
         detailTitleLabel.alpha = 0
         detailAuthorLabel.alpha = 0
+        
+        UIView.animate(withDuration: 0.3) {
+            self.layoutIfNeeded()
+        }
     }
     
     // MARK: - Static Method
