@@ -79,7 +79,6 @@ class BottomPlayBar: UIView {
         $0.addTarget(self, action: #selector(didTapNextButton(_:)), for: .touchUpInside)
         $0.tag = 1
     }
-
     
     lazy var detailPrevButton = UIButton().then {
         $0.setImage(UIImage(named: "ico_prevAudio"), for: .normal)
@@ -87,7 +86,18 @@ class BottomPlayBar: UIView {
         $0.tag = -1
     }
 
+    lazy var detailPrevSecButton = UIButton().then {
+        $0.setImage(UIImage(named: "ico_prev15secAudio"), for: .normal)
+    }
     
+    lazy var detailNextSecButton = UIButton().then {
+        $0.setImage(UIImage(named: "ico_next15secAudio"), for: .normal)
+    }
+    
+    lazy var progressView = UIProgressView().then {
+        $0.progressViewStyle = .default
+    }
+
     // MARK: - Properties
     
     var delegate: MusicDelegate?
@@ -172,10 +182,11 @@ class BottomPlayBar: UIView {
         tag = Self.tagIdx
         backgroundColor = .systemGray6
         addGestureRecognizer(panGesture)
+        clipsToBounds = true
     }
     
     func setConstraints() {
-        [borderView, thumbnail, musicTitleLabel, musicDescLabel, pauseButton, nextButton, detailTitleLabel, detailAuthorLabel, detailPauseButton, detailPrevButton, detailNextButton].forEach { addSubview($0) }
+        [borderView, thumbnail, musicTitleLabel, musicDescLabel, pauseButton, nextButton, detailTitleLabel, detailAuthorLabel, progressView, detailPauseButton, detailPrevButton, detailNextButton, detailNextSecButton, detailPrevSecButton].forEach { addSubview($0) }
         
         snp.makeConstraints {
             $0.height.equalTo(minHeight)
@@ -225,8 +236,14 @@ class BottomPlayBar: UIView {
             $0.centerX.equalTo(detailTitleLabel)
         }
         
+        progressView.snp.makeConstraints {
+            $0.top.equalTo(detailAuthorLabel.snp.bottom).offset(30)
+            $0.leading.trailing.equalToSuperview().inset(30)
+            $0.centerX.equalTo(detailAuthorLabel)
+        }
+        
         detailPauseButton.snp.makeConstraints {
-            $0.top.equalTo(detailAuthorLabel.snp.bottom).offset(20)
+            $0.top.equalTo(progressView.snp.bottom).offset(50)
             $0.centerX.equalToSuperview()
         }
         
@@ -239,6 +256,18 @@ class BottomPlayBar: UIView {
             $0.leading.equalTo(detailPauseButton.snp.trailing).offset(30)
             $0.centerY.equalTo(detailPauseButton)
         }
+        
+        detailPrevSecButton.snp.makeConstraints {
+            $0.trailing.equalTo(detailPrevButton.snp.leading).offset(-30)
+            $0.centerY.equalTo(detailPrevButton)
+        }
+
+        detailNextSecButton.snp.makeConstraints {
+            $0.leading.equalTo(detailNextButton.snp.trailing).offset(30)
+            $0.centerY.equalTo(detailNextButton)
+        }
+        
+        layoutIfNeeded()
     }
     
     private func openView() {
