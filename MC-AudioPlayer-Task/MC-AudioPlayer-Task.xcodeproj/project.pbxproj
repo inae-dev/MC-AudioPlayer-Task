@@ -24,6 +24,7 @@
 		ABD75CB2274799A800F5F4DD /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD75CB1274799A800F5F4DD /* BaseAPI.swift */; };
 		ABD75CB627479ADA00F5F4DD /* MusicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD75CB527479ADA00F5F4DD /* MusicAPI.swift */; };
 		ABD75CB827479CD600F5F4DD /* MusicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD75CB727479CD600F5F4DD /* MusicService.swift */; };
+		CD100E40274DD0920048CEE2 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD100E3F274DD0920048CEE2 /* UIApplication+.swift */; };
 		CD6C96E1274C8428003ACB3C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CD6C96E0274C8428003ACB3C /* Kingfisher */; };
 		CDC061B7274BA036006018E2 /* UserDefaults.key+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC061B6274BA036006018E2 /* UserDefaults.key+.swift */; };
 /* End PBXBuildFile section */
@@ -64,6 +65,7 @@
 		ABD75CB1274799A800F5F4DD /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
 		ABD75CB527479ADA00F5F4DD /* MusicAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicAPI.swift; sourceTree = "<group>"; };
 		ABD75CB727479CD600F5F4DD /* MusicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicService.swift; sourceTree = "<group>"; };
+		CD100E3F274DD0920048CEE2 /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
 		CDC061B6274BA036006018E2 /* UserDefaults.key+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults.key+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -229,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				CDC061B6274BA036006018E2 /* UserDefaults.key+.swift */,
+				CD100E3F274DD0920048CEE2 /* UIApplication+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				CDC061B7274BA036006018E2 /* UserDefaults.key+.swift in Sources */,
 				ABD75CB827479CD600F5F4DD /* MusicService.swift in Sources */,
 				AB887C86274C1177000D3800 /* Music.swift in Sources */,
+				CD100E40274DD0920048CEE2 /* UIApplication+.swift in Sources */,
 				ABD75CAC2746237800F5F4DD /* BottomPlayBar.swift in Sources */,
 				AB9F72FF274501F200F48D88 /* MusicTableViewCell.swift in Sources */,
 			);

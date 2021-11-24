@@ -14,9 +14,7 @@ protocol MusicDelegate {
 class BottomPlayBar: UIView {
     static let tagIdx: Int = 5555
     static var presentedView: Self? {
-        let keyWindow = UIApplication.shared.windows.first(where:  { $0.isKeyWindow })
-        
-        return keyWindow?.viewWithTag(Self.tagIdx) as? Self
+        UIApplication.keyWindow?.viewWithTag(Self.tagIdx) as? Self
     }
     
     // MARK: - UIComponenets
@@ -56,10 +54,33 @@ class BottomPlayBar: UIView {
         $0.addTarget(self, action: #selector(didTapNextButton(_:)), for: .touchUpInside)
     }
     
+    // MARK: - Detail Components
+    
+    let detailTitleLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 25, weight: .heavy)
+        $0.text = "재생 중인 오디오 제목 - 가운데 넘어가면 다음 줄로"
+        $0.numberOfLines = 0
+        $0.textAlignment = .center
+        $0.alpha = 0
+    }
+    
+    let detailAuthorLabel = UILabel().then {
+        $0.text = "작성자의 이름 어쩌구"
+        $0.textAlignment = .center
+        $0.textColor = .lightGray
+        $0.alpha = 0
+    }
+    
     // MARK: - Properties
     
     var delegate: MusicDelegate?
     
+    lazy var panGesture = UIPanGestureRecognizer(target: self, action: #selector(handleBottomPlayView(_:)))
+    lazy var maxHeight = keyWindow.safeAreaLayoutGuide.layoutFrame.height
+    lazy var minHeight = UIScreen.main.bounds.height / 10.0
+    let maxWidth = UIScreen.main.bounds.width - 20.0
+    var keyWindow = UIApplication.keyWindow ?? UIWindow()
+
     // MARK: - Initializer
     
     private init() {
@@ -87,19 +108,60 @@ class BottomPlayBar: UIView {
     func didTapNextButton(_ sender: UIButton) {
         delegate?.nextMusic(dir: 1)
     }
+    
+    @objc
+    func handleBottomPlayView(_ gesture: UIPanGestureRecognizer) {
+        let point = bounds.height - gesture.translation(in: self).y
+        let velocity = gesture.velocity(in: self)
+        
+        switch gesture.state {
+        case .changed:
+            if  point > minHeight, point <= maxHeight {
+                let percent = point / maxHeight
+                let width = percent * maxHeight - 20 < maxWidth ? percent * maxHeight - 20 : maxWidth
+
+                snp.updateConstraints { make in
+                    make.height.equalTo(point)
+                }
+                
+                thumbnail.snp.updateConstraints { make in
+                    make.width.height.equalTo(width)
+                }
+                
+                borderView.alpha = 1.0 - CGFloat(percent)
+                musicTitleLabel.alpha = 1.0 - CGFloat(percent)
+                musicDescLabel.alpha = 1.0 - CGFloat(percent)
+                nextButton.alpha = 1.0 - CGFloat(percent)
+                pauseButton.alpha = 1.0 - CGFloat(percent)
+                detailTitleLabel.alpha = CGFloat(percent)
+                detailAuthorLabel.alpha = CGFloat(percent)
+                
+                panGesture.setTranslation(.zero, in: self)
+            }
+        case .ended:
+            if velocity.y > 0 {
+                closeView()
+            } else {
+                openView()
+            }
+        default:
+            break
+        }
+    }
 
     // MARK: - Methods
     
     func setView() {
         tag = Self.tagIdx
         backgroundColor = .systemGray6
+        addGestureRecognizer(panGesture)
     }
     
     func setConstraints() {
-        [borderView, thumbnail, musicTitleLabel, musicDescLabel, pauseButton, nextButton].forEach { addSubview($0) }
+        [borderView, thumbnail, musicTitleLabel, musicDescLabel, pauseButton, nextButton, detailTitleLabel, detailAuthorLabel].forEach { addSubview($0) }
         
         snp.makeConstraints {
-            $0.height.equalTo(UIScreen.main.bounds.height / 10.0)
+            $0.height.equalTo(minHeight)
         }
         
         borderView.snp.makeConstraints {
@@ -108,14 +170,14 @@ class BottomPlayBar: UIView {
         }
         
         thumbnail.snp.makeConstraints {
-            $0.top.leading.bottom.equalToSuperview().inset(10)
-            $0.width.equalTo(thumbnail.snp.height)
+            $0.top.leading.equalToSuperview().inset(10)
+            $0.width.height.equalTo(minHeight - 20)
         }
         
         musicTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(thumbnail).offset(10)
+            $0.top.equalTo(thumbnail)
             $0.leading.equalTo(thumbnail.snp.trailing).offset(10)
-            $0.trailing.equalTo(pauseButton.snp.leading).offset(-10)
+            $0.width.equalTo(190)
         }
         
         musicDescLabel.snp.makeConstraints {
@@ -124,25 +186,74 @@ class BottomPlayBar: UIView {
         }
         
         pauseButton.snp.makeConstraints {
-            $0.trailing.equalTo(nextButton.snp.leading).offset(-10)
-            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(musicTitleLabel.snp.trailing)
+            $0.trailing.equalTo(nextButton.snp.leading)
+            $0.top.equalTo(nextButton)
             $0.width.height.equalTo(48)
         }
         
         nextButton.snp.makeConstraints {
-            $0.trailing.equalToSuperview().offset(-10)
-            $0.centerY.equalToSuperview()
+            $0.top.trailing.equalToSuperview().inset(10).priority(999)
             $0.width.height.equalTo(48)
         }
         
-        layoutIfNeeded()
+        /// detail view
+        detailTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(thumbnail.snp.bottom).offset(30)
+            $0.leading.trailing.equalToSuperview().inset(30)
+        }
+        
+        detailAuthorLabel.snp.makeConstraints {
+            $0.top.equalTo(detailTitleLabel.snp.bottom).offset(20)
+            $0.centerX.equalTo(detailTitleLabel)
+        }
+    }
+    
+    private func openView() {
+        snp.updateConstraints { make in
+            make.height.equalTo(maxHeight)
+        }
+        
+        thumbnail.snp.updateConstraints { make in
+            make.width.height.equalTo(UIScreen.main.bounds.width - 20.0)
+        }
+
+        borderView.alpha = 0
+        musicTitleLabel.alpha = 0
+        musicDescLabel.alpha = 0
+        nextButton.alpha = 0
+        pauseButton.alpha = 0
+        detailTitleLabel.alpha = 1
+        detailAuthorLabel.alpha = 1
+    }
+    
+    private func closeView() {
+        snp.updateConstraints { make in
+            make.height.equalTo(minHeight)
+        }
+        
+        thumbnail.snp.updateConstraints { make in
+            make.width.height.equalTo(minHeight - 20)
+        }
+        
+        borderView.alpha = 1
+        musicTitleLabel.alpha = 1
+        musicDescLabel.alpha = 1
+        nextButton.alpha = 1
+        pauseButton.alpha = 1
+        detailTitleLabel.alpha = 0
+        detailAuthorLabel.alpha = 0
+        
+        UIView.animate(withDuration: 0.3) {
+            self.layoutIfNeeded()
+        }
     }
     
     // MARK: - Static Method
     
     static func showInKeyWindow() {
         let bottomBar = BottomPlayBar()
-        guard let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else { return }
+        guard let keyWindow = UIApplication.keyWindow else { return }
         
         bottomBar.show(in: keyWindow)
     }
