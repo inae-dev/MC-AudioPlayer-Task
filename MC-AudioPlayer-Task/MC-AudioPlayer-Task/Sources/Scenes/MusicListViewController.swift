@@ -71,6 +71,20 @@ class MusicListViewController: UIViewController {
             
             self?.tableView.reloadData()
         }
+        
+        let query = QueriesQuery()
+        
+        Apollo.shared.client.fetch(query: query) { result in
+            switch result {
+                case .success(let response):
+                    if let users = response.data?.users.compactMap({ $0 }) {
+                        print(users)
+                    }
+                
+                case.failure(let error):
+                    print(error)
+            }
+        }
     }
 }
 

@@ -25,6 +25,12 @@
 		ABD75CB627479ADA00F5F4DD /* MusicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD75CB527479ADA00F5F4DD /* MusicAPI.swift */; };
 		ABD75CB827479CD600F5F4DD /* MusicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD75CB727479CD600F5F4DD /* MusicService.swift */; };
 		CD100E40274DD0920048CEE2 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD100E3F274DD0920048CEE2 /* UIApplication+.swift */; };
+		CD100E87274F87830048CEE2 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = CD100E86274F87830048CEE2 /* Apollo */; };
+		CD100E90274F909A0048CEE2 /* Queries.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CD100E8F274F909A0048CEE2 /* Queries.graphql */; };
+		CD100E96274F95C40048CEE2 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = CD100E95274F95C40048CEE2 /* schema.json */; };
+		CD100E98274F97430048CEE2 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD100E97274F97430048CEE2 /* API.swift */; };
+		CD100E9B274F98A20048CEE2 /* Apollo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD100E9A274F98A20048CEE2 /* Apollo.swift */; };
+		CD100E9D274F9B440048CEE2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD100E9C274F9B440048CEE2 /* User.swift */; };
 		CD6C96E1274C8428003ACB3C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CD6C96E0274C8428003ACB3C /* Kingfisher */; };
 		CDC061B7274BA036006018E2 /* UserDefaults.key+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC061B6274BA036006018E2 /* UserDefaults.key+.swift */; };
 /* End PBXBuildFile section */
@@ -66,6 +72,11 @@
 		ABD75CB527479ADA00F5F4DD /* MusicAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicAPI.swift; sourceTree = "<group>"; };
 		ABD75CB727479CD600F5F4DD /* MusicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicService.swift; sourceTree = "<group>"; };
 		CD100E3F274DD0920048CEE2 /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
+		CD100E8F274F909A0048CEE2 /* Queries.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Queries.graphql; sourceTree = "<group>"; };
+		CD100E95274F95C40048CEE2 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		CD100E97274F97430048CEE2 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		CD100E9A274F98A20048CEE2 /* Apollo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Apollo.swift; path = "MC-AudioPlayer-Task/Apollo.swift"; sourceTree = SOURCE_ROOT; };
+		CD100E9C274F9B440048CEE2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = "MC-AudioPlayer-Task/User.swift"; sourceTree = SOURCE_ROOT; };
 		CDC061B6274BA036006018E2 /* UserDefaults.key+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults.key+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD100E87274F87830048CEE2 /* Apollo in Frameworks */,
 				CD6C96E1274C8428003ACB3C /* Kingfisher in Frameworks */,
 				AB9F72F92744FDE700F48D88 /* SnapKit in Frameworks */,
 				AB9F72FC2744FE3600F48D88 /* Then in Frameworks */,
@@ -102,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				AB887C85274C1177000D3800 /* Music.swift */,
+				CD100E9C274F9B440048CEE2 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -129,6 +142,9 @@
 		AB9F72C12744D55F00F48D88 /* MC-AudioPlayer-Task */ = {
 			isa = PBXGroup;
 			children = (
+				CD100E8F274F909A0048CEE2 /* Queries.graphql */,
+				CD100E95274F95C40048CEE2 /* schema.json */,
+				CD100E97274F97430048CEE2 /* API.swift */,
 				AB9F72F32744DAAD00F48D88 /* Resources */,
 				AB9F72F22744DA9F00F48D88 /* Sources */,
 			);
@@ -204,6 +220,7 @@
 		ABD75CAD2747991100F5F4DD /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				CD100E99274F97F10048CEE2 /* GraphQL */,
 				ABD75CB427479A1900F5F4DD /* Service */,
 				ABD75CB327479A0C00F5F4DD /* API */,
 			);
@@ -225,6 +242,14 @@
 				ABD75CB727479CD600F5F4DD /* MusicService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		CD100E99274F97F10048CEE2 /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+				CD100E9A274F98A20048CEE2 /* Apollo.swift */,
+			);
+			path = GraphQL;
 			sourceTree = "<group>";
 		};
 		CD6C96DA274C7EEE003ACB3C /* Extensions */ = {
@@ -251,6 +276,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AB9F72E92744D56200F48D88 /* Build configuration list for PBXNativeTarget "MC-AudioPlayer-Task" */;
 			buildPhases = (
+				CD100E88274F87900048CEE2 /* Apollo */,
 				AB9F72BB2744D55F00F48D88 /* Sources */,
 				AB9F72BC2744D55F00F48D88 /* Frameworks */,
 				AB9F72BD2744D55F00F48D88 /* Resources */,
@@ -265,6 +291,7 @@
 				AB9F72FB2744FE3600F48D88 /* Then */,
 				ABD75CAF2747997400F5F4DD /* Moya */,
 				CD6C96E0274C8428003ACB3C /* Kingfisher */,
+				CD100E86274F87830048CEE2 /* Apollo */,
 			);
 			productName = "MC-AudioPlayer-Task";
 			productReference = AB9F72BF2744D55F00F48D88 /* MC-AudioPlayer-Task.app */;
@@ -343,6 +370,7 @@
 				AB9F72FA2744FE3600F48D88 /* XCRemoteSwiftPackageReference "Then" */,
 				ABD75CAE2747997400F5F4DD /* XCRemoteSwiftPackageReference "Moya" */,
 				CD6C96DF274C8428003ACB3C /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				CD100E85274F87830048CEE2 /* XCRemoteSwiftPackageReference "apollo-ios" */,
 			);
 			productRefGroup = AB9F72C02744D55F00F48D88 /* Products */;
 			projectDirPath = "";
@@ -360,7 +388,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD100E96274F95C40048CEE2 /* schema.json in Resources */,
 				AB9F72CF2744D56200F48D88 /* LaunchScreen.storyboard in Resources */,
+				CD100E90274F909A0048CEE2 /* Queries.graphql in Resources */,
 				AB9F72CC2744D56200F48D88 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,6 +411,29 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		CD100E88274F87900048CEE2 /* Apollo */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/MC-AudioPlayer-Task/*.graphql",
+			);
+			name = Apollo;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/MC-AudioPlayer-Task/API.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n# Don't run this during index builds\nif [ $ACTION = \"indexbuild\" ]; then exit 0; fi\n\n# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AB9F72BB2744D55F00F48D88 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -391,11 +444,14 @@
 				ABD75CB627479ADA00F5F4DD /* MusicAPI.swift in Sources */,
 				AB9F72F62744F9A300F48D88 /* MusicListViewController.swift in Sources */,
 				ABD75CB2274799A800F5F4DD /* BaseAPI.swift in Sources */,
+				CD100E9B274F98A20048CEE2 /* Apollo.swift in Sources */,
+				CD100E9D274F9B440048CEE2 /* User.swift in Sources */,
 				CDC061B7274BA036006018E2 /* UserDefaults.key+.swift in Sources */,
 				ABD75CB827479CD600F5F4DD /* MusicService.swift in Sources */,
 				AB887C86274C1177000D3800 /* Music.swift in Sources */,
 				CD100E40274DD0920048CEE2 /* UIApplication+.swift in Sources */,
 				ABD75CAC2746237800F5F4DD /* BottomPlayBar.swift in Sources */,
+				CD100E98274F97430048CEE2 /* API.swift in Sources */,
 				AB9F72FF274501F200F48D88 /* MusicTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -776,6 +832,14 @@
 				kind = branch;
 			};
 		};
+		CD100E85274F87830048CEE2 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.0;
+			};
+		};
 		CD6C96DF274C8428003ACB3C /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -801,6 +865,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = ABD75CAE2747997400F5F4DD /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
+		};
+		CD100E86274F87830048CEE2 /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD100E85274F87830048CEE2 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
 		};
 		CD6C96E0274C8428003ACB3C /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;

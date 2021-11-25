@@ -1,0 +1,10 @@
+query Queries {
+    users {
+        id
+        email
+        name
+        nickname
+        bio
+        profileCoverUrl
+    }
+}
